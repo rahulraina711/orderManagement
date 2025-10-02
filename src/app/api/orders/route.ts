@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest, NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
@@ -17,7 +18,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const status = searchParams.get('status')
 
-    let whereClause: any = {}
+    const whereClause: any = {}
 
     // If user is a customer, only show their orders
     if (session.user.role === 'CUSTOMER') {
